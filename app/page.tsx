@@ -25,7 +25,6 @@ export default function Home() {
       ease: "power2.out",
     });
 
-    // Кастомный курсор
     const cursor = document.getElementById("custom-cursor");
     const moveCursor = (e: MouseEvent) => {
       if (cursor) {
@@ -55,7 +54,6 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white font-mono overflow-x-hidden cursor-none">
       
-      {/* Кастомный курсор */}
       <div
         id="custom-cursor"
         className="fixed w-8 h-8 pointer-events-none z-[100] transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference"
@@ -66,7 +64,6 @@ export default function Home() {
         }}
       />
 
-      {/* ХЕДЕР (Плавающий) */}
       <header className="fixed left-0 top-0 z-50 w-full px-6 py-4 md:px-12 md:py-6 bg-black/50 backdrop-blur-sm border-b border-gray-800/50">
         <div className="mx-auto flex w-full max-w-[1600px] items-start justify-between">
           <div ref={logoRef} className="flex flex-col leading-none">
@@ -97,11 +94,11 @@ export default function Home() {
         </div>
       </header>
 
-      {/* ГЛАВНЫЙ ЭКРАН (На всю высоту) */}
-      <section id="manifest" className="relative min-h-screen flex flex-col justify-between p-6 md:p-20 pt-32 md:pt-40">
+      {/* ГЛАВНЫЙ ЭКРАН */}
+      <section id="manifest" className="relative min-h-screen flex flex-col justify-between p-6 md:p-20">
         
-        {/* Текст сверху */}
-        <div className="flex-1">
+        {/* Текст прижат к верху, с отступом под шапку */}
+        <div className="pt-24 md:pt-32">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-none mb-6 glitch-text" data-text="STRATUM ART">
             STRATUM ART
           </h1>
@@ -111,21 +108,19 @@ export default function Home() {
           </p>
         </div>
         
-        {/* Портрет прижат к низу и уменьшен по высоте */}
+        {/* Портрет прижат к правому нижнему углу */}
         <div className="w-full flex justify-end mt-auto">
-          <div className="w-full md:w-[40%] h-[50vh] md:h-[60vh] relative overflow-hidden border border-gray-700">
+          <div className="w-full md:w-[40%] h-[40vh] md:h-[50vh] relative overflow-hidden border border-gray-700">
              <Image src="/images/ark-portrait.jpg" alt="Ark Veresov" fill className="object-cover object-top" />
           </div>
         </div>
 
       </section>
 
-      {/* БЕГУЩАЯ СТРОКА */}
       <div className="w-full overflow-hidden whitespace-nowrap bg-gray-900 py-2 text-xs md:text-sm tracking-widest text-gray-400 uppercase border-b border-gray-800">
         ARK VERESOV · STRATUM ART · ARK VERESOV · STRATUM ART · ARK VERESOV · STRATUM ART ·
       </div>
 
-      {/* РАБОТЫ */}
       <section id="works" className="p-6 md:p-20 border-b border-gray-800">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">02 РАБОТЫ</h2>
         <p className="text-gray-400 mb-10 uppercase tracking-wider text-sm">СЛОЙ 01 // Живопись</p>
@@ -157,7 +152,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ВЫСТАВКА */}
       <section id="exhibition" className="p-6 md:p-20 border-b border-gray-800 bg-gray-950">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">03 ВЫСТАВКА</h2>
         <p className="text-gray-400 mb-6 uppercase tracking-wider text-sm">СЛОЙ 02 // История</p>
@@ -174,7 +168,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* КОТ БОСХ */}
       <section id="bosch" className="p-6 md:p-20 border-b border-gray-800">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">04 КОТ БОСХ</h2>
         <p className="text-gray-400 mb-10 uppercase tracking-wider text-sm">СЛОЙ 03 // Муза</p>
@@ -190,7 +183,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ПРОЦЕСС */}
       <section id="process" className="p-6 md:p-20 border-b border-gray-800 bg-gray-950">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">05 ПРОЦЕСС</h2>
         <p className="text-gray-400 mb-10 uppercase tracking-wider text-sm">СЛОЙ 04 // Метод</p>
@@ -219,7 +211,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* КОНТАКТЫ */}
       <section id="contact" className="p-6 md:p-20">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">06 КОНТАКТЫ</h2>
         <p className="text-gray-400 mb-6 uppercase tracking-wider text-sm">СЛОЙ 05 // Связь</p>
@@ -231,7 +222,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ФУТЕР */}
       <footer className="p-6 border-t border-gray-800 text-xs text-gray-500 flex justify-between">
         <div>© 2026 ARK VERESOV</div>
         <div>MINKS ↔ BERLIN</div>
