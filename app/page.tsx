@@ -69,15 +69,21 @@ export default function Home() {
       </header>
 
       <div className="pt-32 md:pt-40">
-        {/* ГЛАВНЫЙ ЭКРАН (HERO) */}
-        <section id="manifest" className="p-6 md:p-20 pt-10 md:pt-20">
-          <h1 className="text-5xl md:text-8xl font-black leading-none mb-6 glitch-text" data-text="STRATUM ART">
-            STRATUM ART
-          </h1>
-          <p className="text-xl md:text-3xl max-w-2xl leading-snug">
-            Я пишу не картины. Я пишу слои.<br />
-            <span className="text-gray-400">Смотри ближе — там всегда есть ещё один слой.</span>
-          </p>
+        {/* ГЛАВНЫЙ ЭКРАН (Портрет Арка) */}
+        <section id="manifest" className="p-6 md:p-20 pt-10 md:pt-20 flex flex-col md:flex-row gap-10 items-center">
+          <div className="flex-1">
+            <h1 className="text-5xl md:text-8xl font-black leading-none mb-6 glitch-text" data-text="STRATUM ART">
+              STRATUM ART
+            </h1>
+            <p className="text-xl md:text-3xl max-w-2xl leading-snug">
+              Я пишу не картины. Я пишу слои.<br />
+              <span className="text-gray-400">Смотри ближе — там всегда есть ещё один слой.</span>
+            </p>
+          </div>
+          {/* Вот этот блок отвечает за портрет */}
+          <div className="w-full md:w-1/3 aspect-[3/4] relative overflow-hidden border border-gray-700">
+             <Image src="/images/ark-portrait.jpg" alt="Ark Veresov" fill className="object-cover" />
+          </div>
         </section>
 
         {/* БЕГУЩАЯ СТРОКА */}
@@ -93,7 +99,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="border border-gray-700 p-4">
               <div className="aspect-square bg-gray-800 mb-4 relative overflow-hidden">
-                 <Image src="/images/Ночные огни2-compressed.jpeg" alt="Stratum Detail" fill className="object-cover" />
+                <Image src="/images/painting-1.jpg" alt="Stratum Detail" fill className="object-cover" />
               </div>
               <h3 className="text-xl font-bold">СЛОЙ ПЕРВЫЙ</h3>
               <p className="text-gray-500">Масло, текст, холст · 2026</p>
