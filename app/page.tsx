@@ -25,7 +25,7 @@ export default function Home() {
       ease: "power2.out",
     });
 
-    // Кастомный курсор (мастихин)
+    // Кастомный курсор
     const cursor = document.getElementById("custom-cursor");
     const moveCursor = (e: MouseEvent) => {
       if (cursor) {
@@ -37,12 +37,11 @@ export default function Home() {
     return () => window.removeEventListener("mousemove", moveCursor);
   }, []);
 
-  // Плавный скролл с учетом высоты шапки
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const target = document.querySelector(href);
     if (target) {
-      const headerOffset = 80; // Отступ сверху, чтобы шапка не перекрывала заголовок
+      const headerOffset = 80; 
       const elementPosition = target.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - headerOffset;
       
@@ -56,7 +55,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white font-mono overflow-x-hidden cursor-none">
       
-      {/* Кастомный курсор (Мастихин) */}
+      {/* Кастомный курсор */}
       <div
         id="custom-cursor"
         className="fixed w-8 h-8 pointer-events-none z-[100] transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference"
@@ -67,7 +66,7 @@ export default function Home() {
         }}
       />
 
-      {/* ХЕДЕР (снова фиксированный, но полупрозрачный) */}
+      {/* ХЕДЕР */}
       <header className="fixed left-0 top-0 z-50 w-full px-6 py-4 md:px-12 md:py-6 bg-black/80 backdrop-blur-md border-b border-gray-800">
         <div className="mx-auto flex w-full max-w-[1600px] items-start justify-between">
           <div ref={logoRef} className="flex flex-col leading-none">
@@ -98,11 +97,10 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Отступ сверху, чтобы шапка не перекрывала контент */}
       <div className="pt-32 md:pt-40">
         
         {/* ГЛАВНЫЙ ЭКРАН */}
-        <section id="manifest" className="p-6 md:p-20 flex flex-col md:flex-row gap-10 items-center border-b border-gray-800">
+        <section id="manifest" className="p-6 md:p-20 py-12 md:py-16 flex flex-col md:flex-row gap-10 items-center border-b border-gray-800">
           <div className="flex-1">
             <h1 className="text-5xl md:text-8xl font-black leading-none mb-6 glitch-text" data-text="STRATUM ART">
               STRATUM ART
@@ -112,8 +110,10 @@ export default function Home() {
               <span className="text-gray-400">Смотри ближе — там всегда есть ещё один слой.</span>
             </p>
           </div>
-          <div className="w-full md:w-1/3 aspect-[3/4] relative overflow-hidden border border-gray-700">
-             <Image src="/images/ark-portrait.jpg" alt="Ark Veresov" fill className="object-cover" />
+          
+          {/* Портрет Арка - теперь ограничен по высоте */}
+          <div className="w-full md:w-1/3 max-h-[60vh] md:max-h-[500px] aspect-[3/4] relative overflow-hidden border border-gray-700">
+             <Image src="/images/ark-portrait.jpg" alt="Ark Veresov" fill className="object-cover object-top" />
           </div>
         </section>
 
