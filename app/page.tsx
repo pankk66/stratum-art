@@ -66,8 +66,8 @@ export default function Home() {
         }}
       />
 
-      {/* ХЕДЕР */}
-      <header className="fixed left-0 top-0 z-50 w-full px-6 py-4 md:px-12 md:py-6 bg-black/80 backdrop-blur-md border-b border-gray-800">
+      {/* ХЕДЕР (Плавающий) */}
+      <header className="fixed left-0 top-0 z-50 w-full px-6 py-4 md:px-12 md:py-6 bg-black/50 backdrop-blur-sm border-b border-gray-800/50">
         <div className="mx-auto flex w-full max-w-[1600px] items-start justify-between">
           <div ref={logoRef} className="flex flex-col leading-none">
             <a href="/" className="glitch-text font-display text-2xl font-black tracking-tighter text-white md:text-3xl" data-text="STRATUM">
@@ -97,143 +97,145 @@ export default function Home() {
         </div>
       </header>
 
-      <div className="pt-32 md:pt-40">
+      {/* ГЛАВНЫЙ ЭКРАН (На всю высоту) */}
+      <section id="manifest" className="relative min-h-screen flex flex-col justify-between p-6 md:p-20 pt-32 md:pt-40">
         
-        {/* ГЛАВНЫЙ ЭКРАН */}
-        <section id="manifest" className="p-6 md:p-20 py-12 md:py-16 flex flex-col md:flex-row gap-10 items-center border-b border-gray-800">
-          <div className="flex-1">
-            <h1 className="text-5xl md:text-8xl font-black leading-none mb-6 glitch-text" data-text="STRATUM ART">
-              STRATUM ART
-            </h1>
-            <p className="text-xl md:text-3xl max-w-2xl leading-snug">
-              Я пишу не картины. Я пишу слои.<br />
-              <span className="text-gray-400">Смотри ближе — там всегда есть ещё один слой.</span>
-            </p>
-          </div>
-          
-          {/* Портрет Арка - теперь ограничен по высоте */}
-          <div className="w-full md:w-1/3 max-h-[60vh] md:max-h-[500px] aspect-[3/4] relative overflow-hidden border border-gray-700">
+        {/* Текст сверху */}
+        <div className="flex-1">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-none mb-6 glitch-text" data-text="STRATUM ART">
+            STRATUM ART
+          </h1>
+          <p className="text-xl md:text-2xl lg:text-3xl max-w-2xl leading-snug">
+            Я пишу не картины. Я пишу слои.<br />
+            <span className="text-gray-400">Смотри ближе — там всегда есть ещё один слой.</span>
+          </p>
+        </div>
+        
+        {/* Портрет прижат к низу и уменьшен по высоте */}
+        <div className="w-full flex justify-end mt-auto">
+          <div className="w-full md:w-[40%] h-[50vh] md:h-[60vh] relative overflow-hidden border border-gray-700">
              <Image src="/images/ark-portrait.jpg" alt="Ark Veresov" fill className="object-cover object-top" />
           </div>
-        </section>
-
-        {/* БЕГУЩАЯ СТРОКА */}
-        <div className="w-full overflow-hidden whitespace-nowrap bg-gray-900 py-2 text-xs md:text-sm tracking-widest text-gray-400 uppercase border-b border-gray-800">
-          ARK VERESOV · STRATUM ART · ARK VERESOV · STRATUM ART · ARK VERESOV · STRATUM ART ·
         </div>
 
-        {/* РАБОТЫ */}
-        <section id="works" className="p-6 md:p-20 border-b border-gray-800">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">02 РАБОТЫ</h2>
-          <p className="text-gray-400 mb-10 uppercase tracking-wider text-sm">СЛОЙ 01 // Живопись</p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div className="border border-gray-700 p-4">
-              <div className="aspect-square bg-gray-800 mb-4 relative overflow-hidden">
-                 <Image src="/images/painting-1.jpg" alt="Stratum Detail 1" fill className="object-cover" />
-              </div>
-              <h3 className="text-xl font-bold">ГОРОД И ПАМЯТЬ</h3>
-              <p className="text-gray-500">Масло, текст, холст · 2026</p>
-            </div>
-            
-            <div className="border border-gray-700 p-4">
-              <div className="aspect-square bg-gray-800 mb-4 relative overflow-hidden">
-                 <Image src="/images/painting-2.jpg" alt="Stratum Detail 2" fill className="object-cover" />
-              </div>
-              <h3 className="text-xl font-bold">НЕОНОВЫЙ СЛОЙ</h3>
-              <p className="text-gray-500">Акрил, газета · 2025</p>
-            </div>
+      </section>
 
-            <div className="border border-gray-700 p-4">
-              <div className="aspect-square bg-gray-800 mb-4 relative overflow-hidden">
-                 <Image src="/images/painting-3.jpg" alt="Stratum Detail 3" fill className="object-cover" />
-              </div>
-              <h3 className="text-xl font-bold">СИНЯЯ БЕЗДНА</h3>
-              <p className="text-gray-500">Масло, мастихин · 2024</p>
-            </div>
-          </div>
-        </section>
-
-        {/* ВЫСТАВКА */}
-        <section id="exhibition" className="p-6 md:p-20 border-b border-gray-800 bg-gray-950">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">03 ВЫСТАВКА</h2>
-          <p className="text-gray-400 mb-6 uppercase tracking-wider text-sm">СЛОЙ 02 // История</p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-            <div className="max-w-2xl text-lg md:text-xl text-gray-300 leading-relaxed">
-              <p className="mb-4">Первая выставка была неудачной.</p>
-              <p className="mb-4">Критик сказал: «это не живопись, это скрапбукинг».</p>
-              <p>Я подумал: ок, значит, я на верном пути.</p>
-            </div>
-            <div className="aspect-[4/3] bg-gray-800 relative overflow-hidden border border-gray-700">
-               <Image src="/images/exhibition.jpg" alt="Exhibition" fill className="object-cover" />
-            </div>
-          </div>
-        </section>
-
-        {/* КОТ БОСХ */}
-        <section id="bosch" className="p-6 md:p-20 border-b border-gray-800">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">04 КОТ БОСХ</h2>
-          <p className="text-gray-400 mb-10 uppercase tracking-wider text-sm">СЛОЙ 03 // Муза</p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-            <div className="aspect-square bg-gray-800 relative overflow-hidden">
-               <Image src="/images/bosch-cat.jpg" alt="Bosch the Cat" fill className="object-cover" />
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold mb-4">Босх</h3>
-              <p className="text-gray-400 text-lg">Не говорит, но осуждает. Назван в честь Иеронима, потому что тоже смотрит на мир и видит чудовищ. Один глаз зелёный, другой жёлтый.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* ПРОЦЕСС */}
-        <section id="process" className="p-6 md:p-20 border-b border-gray-800 bg-gray-950">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">05 ПРОЦЕСС</h2>
-          <p className="text-gray-400 mb-10 uppercase tracking-wider text-sm">СЛОЙ 04 // Метод</p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="border border-gray-700 p-4">
-              <div className="aspect-square bg-gray-800 mb-4 relative overflow-hidden">
-                 <Image src="/images/process-1.jpg" alt="Процесс 1" fill className="object-cover" />
-              </div>
-              <div className="text-center font-bold text-xl mb-2">01 ЭСКИЗ</div>
-            </div>
-            
-            <div className="border border-gray-700 p-4">
-              <div className="aspect-square bg-gray-800 mb-4 relative overflow-hidden">
-                 <Image src="/images/process-2.jpg" alt="Процесс 2" fill className="object-cover" />
-              </div>
-              <div className="text-center font-bold text-xl mb-2">02 ТЕКСТ</div>
-            </div>
-
-            <div className="border border-gray-700 p-4">
-              <div className="aspect-square bg-gray-800 mb-4 relative overflow-hidden">
-                 <Image src="/images/process-3.jpg" alt="Процесс 3" fill className="object-cover" />
-              </div>
-              <div className="text-center font-bold text-xl mb-2">03 ФАКТУРА</div>
-            </div>
-          </div>
-        </section>
-
-        {/* КОНТАКТЫ */}
-        <section id="contact" className="p-6 md:p-20">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">06 КОНТАКТЫ</h2>
-          <p className="text-gray-400 mb-6 uppercase tracking-wider text-sm">СЛОЙ 05 // Связь</p>
-          <div className="max-w-2xl text-lg md:text-xl text-gray-300 leading-relaxed">
-            <p className="mb-6">Открыт к коллаборациям с брендами красок, книг, музеев и одежды.</p>
-            <a href="mailto:arkveresov@gmail.com" className="inline-block border border-white px-8 py-4 font-bold hover:bg-white hover:text-black transition">
-              НАПИСАТЬ ПИСЬМО
-            </a>
-          </div>
-        </section>
-
-        {/* ФУТЕР */}
-        <footer className="p-6 border-t border-gray-800 text-xs text-gray-500 flex justify-between">
-          <div>© 2026 ARK VERESOV</div>
-          <div>MINKS ↔ BERLIN</div>
-        </footer>
+      {/* БЕГУЩАЯ СТРОКА */}
+      <div className="w-full overflow-hidden whitespace-nowrap bg-gray-900 py-2 text-xs md:text-sm tracking-widest text-gray-400 uppercase border-b border-gray-800">
+        ARK VERESOV · STRATUM ART · ARK VERESOV · STRATUM ART · ARK VERESOV · STRATUM ART ·
       </div>
+
+      {/* РАБОТЫ */}
+      <section id="works" className="p-6 md:p-20 border-b border-gray-800">
+        <h2 className="text-3xl md:text-5xl font-bold mb-4">02 РАБОТЫ</h2>
+        <p className="text-gray-400 mb-10 uppercase tracking-wider text-sm">СЛОЙ 01 // Живопись</p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="border border-gray-700 p-4">
+            <div className="aspect-square bg-gray-800 mb-4 relative overflow-hidden">
+               <Image src="/images/painting-1.jpg" alt="Stratum Detail 1" fill className="object-cover" />
+            </div>
+            <h3 className="text-xl font-bold">ГОРОД И ПАМЯТЬ</h3>
+            <p className="text-gray-500">Масло, текст, холст · 2026</p>
+          </div>
+          
+          <div className="border border-gray-700 p-4">
+            <div className="aspect-square bg-gray-800 mb-4 relative overflow-hidden">
+               <Image src="/images/painting-2.jpg" alt="Stratum Detail 2" fill className="object-cover" />
+            </div>
+            <h3 className="text-xl font-bold">НЕОНОВЫЙ СЛОЙ</h3>
+            <p className="text-gray-500">Акрил, газета · 2025</p>
+          </div>
+
+          <div className="border border-gray-700 p-4">
+            <div className="aspect-square bg-gray-800 mb-4 relative overflow-hidden">
+               <Image src="/images/painting-3.jpg" alt="Stratum Detail 3" fill className="object-cover" />
+            </div>
+            <h3 className="text-xl font-bold">СИНЯЯ БЕЗДНА</h3>
+            <p className="text-gray-500">Масло, мастихин · 2024</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ВЫСТАВКА */}
+      <section id="exhibition" className="p-6 md:p-20 border-b border-gray-800 bg-gray-950">
+        <h2 className="text-3xl md:text-5xl font-bold mb-4">03 ВЫСТАВКА</h2>
+        <p className="text-gray-400 mb-6 uppercase tracking-wider text-sm">СЛОЙ 02 // История</p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <div className="max-w-2xl text-lg md:text-xl text-gray-300 leading-relaxed">
+            <p className="mb-4">Первая выставка была неудачной.</p>
+            <p className="mb-4">Критик сказал: «это не живопись, это скрапбукинг».</p>
+            <p>Я подумал: ок, значит, я на верном пути.</p>
+          </div>
+          <div className="aspect-[4/3] bg-gray-800 relative overflow-hidden border border-gray-700">
+             <Image src="/images/exhibition.jpg" alt="Exhibition" fill className="object-cover" />
+          </div>
+        </div>
+      </section>
+
+      {/* КОТ БОСХ */}
+      <section id="bosch" className="p-6 md:p-20 border-b border-gray-800">
+        <h2 className="text-3xl md:text-5xl font-bold mb-4">04 КОТ БОСХ</h2>
+        <p className="text-gray-400 mb-10 uppercase tracking-wider text-sm">СЛОЙ 03 // Муза</p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <div className="aspect-square bg-gray-800 relative overflow-hidden">
+             <Image src="/images/bosch-cat.jpg" alt="Bosch the Cat" fill className="object-cover" />
+          </div>
+          <div>
+            <h3 className="text-2xl font-bold mb-4">Босх</h3>
+            <p className="text-gray-400 text-lg">Не говорит, но осуждает. Назван в честь Иеронима, потому что тоже смотрит на мир и видит чудовищ. Один глаз зелёный, другой жёлтый.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ПРОЦЕСС */}
+      <section id="process" className="p-6 md:p-20 border-b border-gray-800 bg-gray-950">
+        <h2 className="text-3xl md:text-5xl font-bold mb-4">05 ПРОЦЕСС</h2>
+        <p className="text-gray-400 mb-10 uppercase tracking-wider text-sm">СЛОЙ 04 // Метод</p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="border border-gray-700 p-4">
+            <div className="aspect-square bg-gray-800 mb-4 relative overflow-hidden">
+               <Image src="/images/process-1.jpg" alt="Процесс 1" fill className="object-cover" />
+            </div>
+            <div className="text-center font-bold text-xl mb-2">01 ЭСКИЗ</div>
+          </div>
+          
+          <div className="border border-gray-700 p-4">
+            <div className="aspect-square bg-gray-800 mb-4 relative overflow-hidden">
+               <Image src="/images/process-2.jpg" alt="Процесс 2" fill className="object-cover" />
+            </div>
+            <div className="text-center font-bold text-xl mb-2">02 ТЕКСТ</div>
+          </div>
+
+          <div className="border border-gray-700 p-4">
+            <div className="aspect-square bg-gray-800 mb-4 relative overflow-hidden">
+               <Image src="/images/process-3.jpg" alt="Процесс 3" fill className="object-cover" />
+            </div>
+            <div className="text-center font-bold text-xl mb-2">03 ФАКТУРА</div>
+          </div>
+        </div>
+      </section>
+
+      {/* КОНТАКТЫ */}
+      <section id="contact" className="p-6 md:p-20">
+        <h2 className="text-3xl md:text-5xl font-bold mb-4">06 КОНТАКТЫ</h2>
+        <p className="text-gray-400 mb-6 uppercase tracking-wider text-sm">СЛОЙ 05 // Связь</p>
+        <div className="max-w-2xl text-lg md:text-xl text-gray-300 leading-relaxed">
+          <p className="mb-6">Открыт к коллаборациям с брендами красок, книг, музеев и одежды.</p>
+          <a href="mailto:arkveresov@gmail.com" className="inline-block border border-white px-8 py-4 font-bold hover:bg-white hover:text-black transition">
+            НАПИСАТЬ ПИСЬМО
+          </a>
+        </div>
+      </section>
+
+      {/* ФУТЕР */}
+      <footer className="p-6 border-t border-gray-800 text-xs text-gray-500 flex justify-between">
+        <div>© 2026 ARK VERESOV</div>
+        <div>MINKS ↔ BERLIN</div>
+      </footer>
     </main>
   );
 }
