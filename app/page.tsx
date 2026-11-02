@@ -40,7 +40,8 @@ export default function Home() {
     e.preventDefault();
     const target = document.querySelector(href);
     if (target) {
-      const headerOffset = 80; 
+      // Делаем отступ побольше, чтобы шапка (которая висит сверху) не перекрывала заголовки
+      const headerOffset = 120; 
       const elementPosition = target.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - headerOffset;
       
@@ -64,7 +65,7 @@ export default function Home() {
         }}
       />
 
-      <header className="fixed left-0 top-0 z-50 w-full px-6 py-4 md:px-12 md:py-6 bg-black/50 backdrop-blur-sm border-b border-gray-800/50">
+      <header className="fixed left-0 top-0 z-50 w-full px-6 py-4 md:px-12 md:py-6 bg-black/60 backdrop-blur-md border-b border-gray-800/50">
         <div className="mx-auto flex w-full max-w-[1600px] items-start justify-between">
           <div ref={logoRef} className="flex flex-col leading-none">
             <a href="/" className="glitch-text font-display text-2xl font-black tracking-tighter text-white md:text-3xl" data-text="STRATUM">
@@ -95,10 +96,10 @@ export default function Home() {
       </header>
 
       {/* ГЛАВНЫЙ ЭКРАН */}
-      <section id="manifest" className="relative min-h-screen flex flex-col justify-between p-6 md:p-20">
+      <section id="manifest" className="relative min-h-screen flex flex-col justify-between p-6 md:p-20 pt-40 md:pt-48">
         
-        {/* Текст прижат к верху, с отступом под шапку */}
-        <div className="pt-24 md:pt-32">
+        {/* Текст с гарантированным отступом сверху */}
+        <div>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-none mb-6 glitch-text" data-text="STRATUM ART">
             STRATUM ART
           </h1>
@@ -108,8 +109,8 @@ export default function Home() {
           </p>
         </div>
         
-        {/* Портрет прижат к правому нижнему углу */}
-        <div className="w-full flex justify-end mt-auto">
+        {/* Портрет */}
+        <div className="w-full flex justify-end mt-12 md:mt-auto">
           <div className="w-full md:w-[40%] h-[40vh] md:h-[50vh] relative overflow-hidden border border-gray-700">
              <Image src="/images/ark-portrait.jpg" alt="Ark Veresov" fill className="object-cover object-top" />
           </div>
