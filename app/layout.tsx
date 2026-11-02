@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Unbounded, Inter } from "next/font/google";
 import "./globals.css";
-import { SmoothScroll } from "@/components/SmoothScroll";
-import { CustomCursor } from "@/components/CustomCursor";
 
 const display = Unbounded({
   subsets: ["latin", "cyrillic"],
@@ -27,11 +25,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${display.variable} ${body.variable} antialiased bg-stratum-ink text-stratum-paper`}>
-        <SmoothScroll>
-          <CustomCursor />
-          {children}
-        </SmoothScroll>
+      <body className={`${display.variable} ${body.variable} antialiased bg-black text-white`}>
+        {children}
       </body>
     </html>
   );
