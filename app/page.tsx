@@ -25,6 +25,7 @@ export default function Home() {
       ease: "power2.out",
     });
 
+    // Включаем курсор только на устройствах с мышкой (не на телефонах)
     const cursor = document.getElementById("custom-cursor");
     const moveCursor = (e: MouseEvent) => {
       if (cursor) {
@@ -32,16 +33,30 @@ export default function Home() {
         cursor.style.top = e.clientY + "px";
       }
     };
-    window.addEventListener("mousemove", moveCursor);
+    
+    // Проверка: если у устройства есть точный указатель (мышь), показываем курсор
+    if (window.matchMedia("(pointer: fine)").matches) {
+      window.addEventListener("mousemove", moveCursor);
+    } else {
+      // На телефонах скрываем кастомный курсор
+      if (cursor) cursor.style.display = "none";
+      document.body.classList.remove("cursor-none");
+    }
+
     return () => window.removeEventListener("mousemove", moveCursor);
   }, []);
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+    
+    if (href === "#manifest") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
     const target = document.querySelector(href);
     if (target) {
-      // Делаем отступ побольше, чтобы шапка (которая висит сверху) не перекрывала заголовки
-      const headerOffset = 120; 
+      const headerOffset = 100; 
       const elementPosition = target.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - headerOffset;
       
@@ -53,11 +68,12 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-black text-white font-mono overflow-x-hidden cursor-none">
+    <main className="min-h-screen bg-black text-white font-mono overflow-x-hidden md:cursor-none">
       
+      {/* Кастомный курсор (скрыт на телефонах через useEffect) */}
       <div
         id="custom-cursor"
-        className="fixed w-8 h-8 pointer-events-none z-[100] transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference"
+        className="hidden md:block fixed w-8 h-8 pointer-events-none z-[100] transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference"
         style={{
           backgroundImage: "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14 10l7.5-7.5a2.12 2.12 0 0 0-3-3L11 7\"/><path d=\"M11 7l6 6\"/><path d=\"M11 7L3 15\"/><path d=\"M3 15v6h6\"/><path d=\"M9 21l-6-6\"/></svg>')",
           backgroundSize: "contain",
@@ -65,7 +81,7 @@ export default function Home() {
         }}
       />
 
-      {/* ХЕДЕР (Компактный, без размытия) */}
+      {/* ХЕДЕР */}
       <header className="fixed left-0 top-0 z-50 w-full px-6 py-4 md:px-12 md:py-6 bg-black border-b border-gray-800">
         <div className="mx-auto flex w-full max-w-[1600px] items-start justify-between">
           <div ref={logoRef} className="flex flex-col leading-none">
@@ -96,10 +112,8 @@ export default function Home() {
         </div>
       </header>
 
-      {/* ГЛАВНЫЙ ЭКРАН (Текст слева, картинка справа) */}
-      <section id="manifest" className="relative min-h-screen flex flex-col md:flex-row items-center justify-between p-6 md:p-20 pt-32 md:pt-40">
-        
-        {/* Текст */}
+      {/* ГЛАВНЫЙ ЭКРАН */}
+      <section id="manifest" className="relative min-h-screen flex flex-col md:flex-row items-center justify-between px-8 md:px-20 lg:px-32 pt-32 md:pt-40 pb-12 md:pb-20">
         <div className="w-full md:w-1/2 z-10 mb-10 md:mb-0">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-none mb-6 glitch-text" data-text="STRATUM ART">
             STRATUM ART
@@ -109,23 +123,22 @@ export default function Home() {
             <span className="text-gray-400">Смотри ближе — там всегда есть ещё один слой.</span>
           </p>
         </div>
-        
-        {/* Портрет */}
         <div className="w-full md:w-[45%] h-[50vh] md:h-[60vh] relative overflow-hidden border border-gray-700">
            <Image src="/images/ark-portrait.jpg" alt="Ark Veresov" fill className="object-cover object-top" />
         </div>
-
       </section>
 
+      {/* БЕГУЩАЯ СТРОКА */}
       <div className="w-full overflow-hidden whitespace-nowrap bg-gray-900 py-2 text-xs md:text-sm tracking-widest text-gray-400 uppercase border-b border-gray-800">
         ARK VERESOV · STRATUM ART · ARK VERESOV · STRATUM ART · ARK VERESOV · STRATUM ART ·
       </div>
 
-      <section id="works" className="p-6 md:p-20 border-b border-gray-800">
+      {/* РАБОТЫ */}
+      <section id="works" className="px-8 md:px-20 lg:px-32 py-16 md:py-24 border-b border-gray-800">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">02 РАБОТЫ</h2>
         <p className="text-gray-400 mb-10 uppercase tracking-wider text-sm">СЛОЙ 01 // Живопись</p>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           <div className="border border-gray-700 p-4">
             <div className="aspect-square bg-gray-800 mb-4 relative overflow-hidden">
                <Image src="/images/painting-1.jpg" alt="Stratum Detail 1" fill className="object-cover" />
@@ -152,7 +165,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="exhibition" className="p-6 md:p-20 border-b border-gray-800 bg-gray-950">
+      {/* ВЫСТАВКА */}
+      <section id="exhibition" className="px-8 md:px-20 lg:px-32 py-16 md:py-24 border-b border-gray-800 bg-gray-950">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">03 ВЫСТАВКА</h2>
         <p className="text-gray-400 mb-6 uppercase tracking-wider text-sm">СЛОЙ 02 // История</p>
         
@@ -168,7 +182,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="bosch" className="p-6 md:p-20 border-b border-gray-800">
+      {/* КОТ БОСХ */}
+      <section id="bosch" className="px-8 md:px-20 lg:px-32 py-16 md:py-24 border-b border-gray-800">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">04 КОТ БОСХ</h2>
         <p className="text-gray-400 mb-10 uppercase tracking-wider text-sm">СЛОЙ 03 // Муза</p>
         
@@ -183,11 +198,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="process" className="p-6 md:p-20 border-b border-gray-800 bg-gray-950">
+      {/* ПРОЦЕСС */}
+      <section id="process" className="px-8 md:px-20 lg:px-32 py-16 md:py-24 border-b border-gray-800 bg-gray-950">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">05 ПРОЦЕСС</h2>
         <p className="text-gray-400 mb-10 uppercase tracking-wider text-sm">СЛОЙ 04 // Метод</p>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           <div className="border border-gray-700 p-4">
             <div className="aspect-square bg-gray-800 mb-4 relative overflow-hidden">
                <Image src="/images/process-1.jpg" alt="Процесс 1" fill className="object-cover" />
@@ -211,20 +227,41 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="p-6 md:p-20">
+      {/* КОНТАКТЫ (в стиле Арка) */}
+      <section id="contact" className="px-8 md:px-20 lg:px-32 py-16 md:py-24">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">06 КОНТАКТЫ</h2>
-        <p className="text-gray-400 mb-6 uppercase tracking-wider text-sm">СЛОЙ 05 // Связь</p>
-        <div className="max-w-2xl text-lg md:text-xl text-gray-300 leading-relaxed">
-          <p className="mb-6">Открыт к коллаборациям с брендами красок, книг, музеев и одежды.</p>
-          <a href="mailto:arkveresov@gmail.com" className="inline-block border border-white px-8 py-4 font-bold hover:bg-white hover:text-black transition">
-            НАПИСАТЬ ПИСЬМО
+        <p className="text-gray-400 mb-10 uppercase tracking-wider text-sm">СЛОЙ 05 // Связь</p>
+        
+        <div className="border border-gray-800 bg-[#0a0a0a] p-8 md:p-12 max-w-3xl relative overflow-hidden">
+          {/* Декоративный номер слоя */}
+          <div className="absolute top-4 right-6 text-6xl md:text-8xl font-black text-gray-800/30 pointer-events-none">
+            06
+          </div>
+          
+          <h3 className="text-2xl md:text-3xl font-bold mb-4">Давай сделаем слой</h3>
+          <p className="text-gray-400 text-lg md:text-xl leading-relaxed mb-8 max-w-lg">
+            Открыт к коллаборациям с брендами красок, книг, музеев и одежды. Если у тебя есть идея или вопрос — напиши.
+          </p>
+          
+          <a 
+            href="mailto:arkveresov@gmail.com" 
+            className="group inline-flex items-center gap-3 border border-gray-600 px-8 py-4 font-bold text-white hover:bg-white hover:text-black transition-colors"
+          >
+            <span>ARKVERESOV@GMAIL.COM</span>
+            <span className="group-hover:translate-x-1 transition-transform">→</span>
           </a>
+
+          <div className="mt-12 pt-6 border-t border-gray-800 flex flex-wrap gap-6 text-sm text-gray-500 font-accent uppercase tracking-widest">
+            <a href="https://instagram.com/arkveresov" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Instagram</a>
+            <span>📍 Минск ↔ Берлин</span>
+          </div>
         </div>
       </section>
 
-      <footer className="p-6 border-t border-gray-800 text-xs text-gray-500 flex justify-between">
+      {/* ФУТЕР */}
+      <footer className="px-8 md:px-20 lg:px-32 py-6 border-t border-gray-800 text-xs text-gray-500 flex flex-col md:flex-row justify-between gap-4">
         <div>© 2026 ARK VERESOV</div>
-        <div>MINKS ↔ BERLIN</div>
+        <div>STRATUM ART · СЛОИСТОЕ ПИСЬМО</div>
       </footer>
     </main>
   );
