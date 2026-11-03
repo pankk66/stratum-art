@@ -25,7 +25,6 @@ export default function Home() {
       ease: "power2.out",
     });
 
-    // Включаем курсор только на устройствах с мышкой (не на телефонах)
     const cursor = document.getElementById("custom-cursor");
     const moveCursor = (e: MouseEvent) => {
       if (cursor) {
@@ -34,11 +33,9 @@ export default function Home() {
       }
     };
     
-    // Проверка: если у устройства есть точный указатель (мышь), показываем курсор
     if (window.matchMedia("(pointer: fine)").matches) {
       window.addEventListener("mousemove", moveCursor);
     } else {
-      // На телефонах скрываем кастомный курсор
       if (cursor) cursor.style.display = "none";
       document.body.classList.remove("cursor-none");
     }
@@ -70,7 +67,6 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white font-mono overflow-x-hidden md:cursor-none">
       
-      {/* Кастомный курсор (скрыт на телефонах через useEffect) */}
       <div
         id="custom-cursor"
         className="hidden md:block fixed w-8 h-8 pointer-events-none z-[100] transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference"
@@ -113,12 +109,12 @@ export default function Home() {
       </header>
 
       {/* ГЛАВНЫЙ ЭКРАН */}
-      <section id="manifest" className="relative min-h-screen flex flex-col md:flex-row items-center justify-between px-8 md:px-20 lg:px-32 pt-32 md:pt-40 pb-12 md:pb-20">
+      <section id="manifest" className="relative min-h-screen flex flex-col md:flex-row items-center justify-between px-6 md:px-20 lg:px-32 pt-32 md:pt-40 pb-12 md:pb-20">
         <div className="w-full md:w-1/2 z-10 mb-10 md:mb-0">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-none mb-6 glitch-text" data-text="STRATUM ART">
+          <h1 className="text-4xl md:text-7xl lg:text-8xl font-black leading-none mb-6 glitch-text" data-text="STRATUM ART">
             STRATUM ART
           </h1>
-          <p className="text-xl md:text-2xl lg:text-3xl leading-snug">
+          <p className="text-lg md:text-2xl lg:text-3xl leading-snug">
             Я пишу не картины. Я пишу слои.<br />
             <span className="text-gray-400">Смотри ближе — там всегда есть ещё один слой.</span>
           </p>
@@ -134,7 +130,7 @@ export default function Home() {
       </div>
 
       {/* РАБОТЫ */}
-      <section id="works" className="px-8 md:px-20 lg:px-32 py-16 md:py-24 border-b border-gray-800">
+      <section id="works" className="px-6 md:px-20 lg:px-32 py-16 md:py-24 border-b border-gray-800">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">02 РАБОТЫ</h2>
         <p className="text-gray-400 mb-10 uppercase tracking-wider text-sm">СЛОЙ 01 // Живопись</p>
         
@@ -166,7 +162,7 @@ export default function Home() {
       </section>
 
       {/* ВЫСТАВКА */}
-      <section id="exhibition" className="px-8 md:px-20 lg:px-32 py-16 md:py-24 border-b border-gray-800 bg-gray-950">
+      <section id="exhibition" className="px-6 md:px-20 lg:px-32 py-16 md:py-24 border-b border-gray-800 bg-gray-950">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">03 ВЫСТАВКА</h2>
         <p className="text-gray-400 mb-6 uppercase tracking-wider text-sm">СЛОЙ 02 // История</p>
         
@@ -183,7 +179,7 @@ export default function Home() {
       </section>
 
       {/* КОТ БОСХ */}
-      <section id="bosch" className="px-8 md:px-20 lg:px-32 py-16 md:py-24 border-b border-gray-800">
+      <section id="bosch" className="px-6 md:px-20 lg:px-32 py-16 md:py-24 border-b border-gray-800">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">04 КОТ БОСХ</h2>
         <p className="text-gray-400 mb-10 uppercase tracking-wider text-sm">СЛОЙ 03 // Муза</p>
         
@@ -199,7 +195,7 @@ export default function Home() {
       </section>
 
       {/* ПРОЦЕСС */}
-      <section id="process" className="px-8 md:px-20 lg:px-32 py-16 md:py-24 border-b border-gray-800 bg-gray-950">
+      <section id="process" className="px-6 md:px-20 lg:px-32 py-16 md:py-24 border-b border-gray-800 bg-gray-950">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">05 ПРОЦЕСС</h2>
         <p className="text-gray-400 mb-10 uppercase tracking-wider text-sm">СЛОЙ 04 // Метод</p>
         
@@ -227,31 +223,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* КОНТАКТЫ (в стиле Арка) */}
-      <section id="contact" className="px-8 md:px-20 lg:px-32 py-16 md:py-24">
+      {/* КОНТАКТЫ */}
+      <section id="contact" className="px-6 md:px-20 lg:px-32 py-16 md:py-24">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">06 КОНТАКТЫ</h2>
         <p className="text-gray-400 mb-10 uppercase tracking-wider text-sm">СЛОЙ 05 // Связь</p>
         
-        <div className="border border-gray-800 bg-[#0a0a0a] p-8 md:p-12 max-w-3xl relative overflow-hidden">
-          {/* Декоративный номер слоя */}
+        {/* Карточка контактов (сделана резиновой, чтобы не вылезать за края) */}
+        <div className="border border-gray-800 bg-[#0a0a0a] p-6 md:p-12 w-full max-w-3xl relative overflow-hidden">
           <div className="absolute top-4 right-6 text-6xl md:text-8xl font-black text-gray-800/30 pointer-events-none">
             06
           </div>
           
           <h3 className="text-2xl md:text-3xl font-bold mb-4">Давай сделаем слой</h3>
-          <p className="text-gray-400 text-lg md:text-xl leading-relaxed mb-8 max-w-lg">
+          <p className="text-gray-400 text-base md:text-xl leading-relaxed mb-8 max-w-lg">
             Открыт к коллаборациям с брендами красок, книг, музеев и одежды. Если у тебя есть идея или вопрос — напиши.
           </p>
           
           <a 
             href="mailto:arkveresov@gmail.com" 
-            className="group inline-flex items-center gap-3 border border-gray-600 px-8 py-4 font-bold text-white hover:bg-white hover:text-black transition-colors"
+            className="group inline-flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-3 border border-gray-600 px-6 py-4 font-bold text-white hover:bg-white hover:text-black transition-colors text-sm md:text-base break-all"
           >
             <span>ARKVERESOV@GMAIL.COM</span>
-            <span className="group-hover:translate-x-1 transition-transform">→</span>
+            <span className="hidden md:inline group-hover:translate-x-1 transition-transform">→</span>
           </a>
 
-          <div className="mt-12 pt-6 border-t border-gray-800 flex flex-wrap gap-6 text-sm text-gray-500 font-accent uppercase tracking-widest">
+          <div className="mt-12 pt-6 border-t border-gray-800 flex flex-wrap gap-6 text-xs md:text-sm text-gray-500 font-accent uppercase tracking-widest">
             <a href="https://instagram.com/arkveresov" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Instagram</a>
             <span>📍 Минск ↔ Берлин</span>
           </div>
@@ -259,7 +255,7 @@ export default function Home() {
       </section>
 
       {/* ФУТЕР */}
-      <footer className="px-8 md:px-20 lg:px-32 py-6 border-t border-gray-800 text-xs text-gray-500 flex flex-col md:flex-row justify-between gap-4">
+      <footer className="px-6 md:px-20 lg:px-32 py-6 border-t border-gray-800 text-xs text-gray-500 flex flex-col md:flex-row justify-between gap-4">
         <div>© 2026 ARK VERESOV</div>
         <div>STRATUM ART · СЛОИСТОЕ ПИСЬМО</div>
       </footer>
