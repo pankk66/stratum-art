@@ -65,7 +65,8 @@ export default function Home() {
         }}
       />
 
-      <header className="fixed left-0 top-0 z-50 w-full px-6 py-4 md:px-12 md:py-6 bg-black/60 backdrop-blur-md border-b border-gray-800/50">
+      {/* ХЕДЕР (Компактный, без размытия) */}
+      <header className="fixed left-0 top-0 z-50 w-full px-6 py-4 md:px-12 md:py-6 bg-black border-b border-gray-800">
         <div className="mx-auto flex w-full max-w-[1600px] items-start justify-between">
           <div ref={logoRef} className="flex flex-col leading-none">
             <a href="/" className="glitch-text font-display text-2xl font-black tracking-tighter text-white md:text-3xl" data-text="STRATUM">
@@ -95,25 +96,23 @@ export default function Home() {
         </div>
       </header>
 
-      {/* ГЛАВНЫЙ ЭКРАН */}
-      <section id="manifest" className="relative min-h-screen flex flex-col justify-between p-6 md:p-20 pt-40 md:pt-48">
+      {/* ГЛАВНЫЙ ЭКРАН (Текст слева, картинка справа) */}
+      <section id="manifest" className="relative min-h-screen flex flex-col md:flex-row items-center justify-between p-6 md:p-20 pt-32 md:pt-40">
         
-        {/* Текст с гарантированным отступом сверху */}
-        <div>
+        {/* Текст */}
+        <div className="w-full md:w-1/2 z-10 mb-10 md:mb-0">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-none mb-6 glitch-text" data-text="STRATUM ART">
             STRATUM ART
           </h1>
-          <p className="text-xl md:text-2xl lg:text-3xl max-w-2xl leading-snug">
+          <p className="text-xl md:text-2xl lg:text-3xl leading-snug">
             Я пишу не картины. Я пишу слои.<br />
             <span className="text-gray-400">Смотри ближе — там всегда есть ещё один слой.</span>
           </p>
         </div>
         
         {/* Портрет */}
-        <div className="w-full flex justify-end mt-12 md:mt-auto">
-          <div className="w-full md:w-[40%] h-[40vh] md:h-[50vh] relative overflow-hidden border border-gray-700">
-             <Image src="/images/ark-portrait.jpg" alt="Ark Veresov" fill className="object-cover object-top" />
-          </div>
+        <div className="w-full md:w-[45%] h-[50vh] md:h-[60vh] relative overflow-hidden border border-gray-700">
+           <Image src="/images/ark-portrait.jpg" alt="Ark Veresov" fill className="object-cover object-top" />
         </div>
 
       </section>
