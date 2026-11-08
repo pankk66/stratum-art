@@ -223,41 +223,86 @@ export default function Home() {
         </div>
       </section>
 
-      {/* КОНТАКТЫ */}
-      <section id="contact" className="px-6 md:px-20 lg:px-32 py-16 md:py-24">
-        <h2 className="text-3xl md:text-5xl font-bold mb-4">06 КОНТАКТЫ</h2>
-        <p className="text-gray-400 mb-10 uppercase tracking-wider text-sm">СЛОЙ 05 // Связь</p>
+      {/* КОНТАКТЫ (Расширенный блок) */}
+      <section id="contact" className="px-6 md:px-20 lg:px-32 py-20 md:py-32 bg-[#050505] border-b border-gray-800 relative overflow-hidden">
         
-        {/* Карточка контактов (сделана резиновой, чтобы не вылезать за края) */}
-        <div className="border border-gray-800 bg-[#0a0a0a] p-6 md:p-12 w-full max-w-3xl relative overflow-hidden">
-          <div className="absolute top-4 right-6 text-6xl md:text-8xl font-black text-gray-800/30 pointer-events-none">
-            06
-          </div>
-          
-          <h3 className="text-2xl md:text-3xl font-bold mb-4">Давай сделаем слой</h3>
-          <p className="text-gray-400 text-base md:text-xl leading-relaxed mb-8 max-w-lg">
-            Открыт к коллаборациям с брендами красок, книг, музеев и одежды. Если у тебя есть идея или вопрос — напиши.
-          </p>
-          
-          <a 
-            href="mailto:arkveresov@gmail.com" 
-            className="group inline-flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-3 border border-gray-600 px-6 py-4 font-bold text-white hover:bg-white hover:text-black transition-colors text-sm md:text-base break-all"
-          >
-            <span>ARKVERESOV@GMAIL.COM</span>
-            <span className="hidden md:inline group-hover:translate-x-1 transition-transform">→</span>
-          </a>
+        {/* Декоративный фоновый текст */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-black text-white/[0.02] pointer-events-none select-none whitespace-nowrap z-0">
+          ARK VERESOV
+        </div>
 
-          <div className="mt-12 pt-6 border-t border-gray-800 flex flex-wrap gap-6 text-xs md:text-sm text-gray-500 font-accent uppercase tracking-widest">
-            <a href="https://instagram.com/arkveresov" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Instagram</a>
-            <span>📍 Минск ↔ Берлин</span>
+        <div className="relative z-10 max-w-4xl">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">06 КОНТАКТЫ</h2>
+          <p className="text-gray-400 mb-12 uppercase tracking-wider text-sm">СЛОЙ 05 // Связь</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {/* Левая часть: Текст и Почта */}
+            <div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-4">Давай сделаем слой</h3>
+              <p className="text-gray-400 text-lg leading-relaxed mb-8">
+                Открыт к коллаборациям с брендами красок, книг, музеев и одежды. 
+                Если у тебя есть идея, вопрос или ты просто хочешь купить картину — напиши.
+              </p>
+              
+              <a 
+                href="mailto:arkveresov@gmail.com" 
+                className="group inline-flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-3 border border-gray-600 px-8 py-4 font-bold text-white hover:bg-white hover:text-black transition-colors text-sm md:text-base break-all"
+              >
+                <span>ARKVERESOV@GMAIL.COM</span>
+                <span className="hidden md:inline group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+            </div>
+
+            {/* Правая часть: Соцсети и Локация */}
+            <div className="flex flex-col justify-between">
+              <div>
+                <h4 className="text-xs text-gray-500 uppercase tracking-widest mb-4">Где меня найти</h4>
+                <div className="flex flex-col gap-4">
+                  <a href="https://instagram.com/arkveresov" target="_blank" rel="noreferrer" className="group flex items-center justify-between border-b border-gray-800 pb-4 hover:border-white transition-colors">
+                    <span className="text-lg font-bold group-hover:text-lime-400 transition-colors">Instagram</span>
+                    <span className="text-gray-500 group-hover:text-white transition-colors">↗</span>
+                  </a>
+                  <a href="https://t.me/arkveresov" target="_blank" rel="noreferrer" className="group flex items-center justify-between border-b border-gray-800 pb-4 hover:border-white transition-colors">
+                    <span className="text-lg font-bold group-hover:text-lime-400 transition-colors">Telegram (Закулисье)</span>
+                    <span className="text-gray-500 group-hover:text-white transition-colors">↗</span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="mt-8">
+                <h4 className="text-xs text-gray-500 uppercase tracking-widest mb-2">Локация</h4>
+                <p className="text-lg text-gray-300">Минск ↔ Берлин</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ФУТЕР */}
-      <footer className="px-6 md:px-20 lg:px-32 py-6 border-t border-gray-800 text-xs text-gray-500 flex flex-col md:flex-row justify-between gap-4">
-        <div>© 2026 ARK VERESOV</div>
-        <div>STRATUM ART · СЛОИСТОЕ ПИСЬМО</div>
+      {/* ФУТЕР (Расширенный) */}
+      <footer className="px-6 md:px-20 lg:px-32 py-12 bg-black text-sm text-gray-500">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+          
+          <div className="flex flex-col gap-2">
+            <div className="text-white font-bold text-xl font-display tracking-widest">STRATUM</div>
+            <div>© 2026 ARK VERESOV. Все слои защищены.</div>
+          </div>
+
+          <div className="flex flex-col md:flex-row gap-6 md:gap-12">
+            <div className="flex flex-col gap-2">
+              <span className="text-xs text-gray-600 uppercase tracking-wider">Жанр</span>
+              <span className="text-gray-300">Слоистое письмо (Stratum Art)</span>
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="text-xs text-gray-600 uppercase tracking-wider">Техника</span>
+              <span className="text-gray-300">Масло, акрил, коллаж, текст</span>
+            </div>
+          </div>
+
+          <div className="text-xs text-gray-600 max-w-[200px] text-left md:text-right">
+            Персонаж вымышлен. Изображения созданы с помощью AI. Смотрите ближе.
+          </div>
+
+        </div>
       </footer>
     </main>
   );
